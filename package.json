@@ -7,11 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec npx ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "migrate": "npx prisma migrate dev --name init"
   },
   "author": "Terence Faid JABO",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
@@ -21,6 +23,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
+    "bcrypt": "^5.1.1",
     "express": "^4.19.2"
   }
 }
