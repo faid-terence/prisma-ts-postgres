@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export interface User {
   id: number;
   name: string;
@@ -5,4 +7,12 @@ export interface User {
   password: string;
 }
 
-
+export interface Job {
+  id: number;
+  title: string;
+  description: string;
+  company: string;
+  location: string;
+  salary: number;
+  applyLink: string;
+}
