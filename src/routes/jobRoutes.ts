@@ -6,5 +6,6 @@ const router = express.Router();
 const jobController = new JobController();
 
 router.post("/create", jobController.createJob);
+router.get("/", jobController.getJobs);
 
 export default router;
