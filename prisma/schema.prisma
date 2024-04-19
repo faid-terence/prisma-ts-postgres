@@ -24,12 +24,13 @@ model User {
 
 
 model Job {
- id      Int      @id @default(autoincrement())
- title    String
- description String
- company     String
- location    String
- salary      Int
- applyLink   String 
-
+  id          Int     @id @default(autoincrement())
+  title       String  @unique
+  description String
+  company     String
+  location    String
+  salary      Int     @default(0) // Set a default value if needed
+  applyLink   String
 }
+
+

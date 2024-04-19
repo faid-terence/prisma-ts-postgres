@@ -1,6 +1,10 @@
 import express from "express";
 import { connectDB } from "./config/connectDB";
 import AuthRoutes from "./routes/authRoutes";
+import dotenv from "dotenv";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import JobRoutes from "./routes/jobRoutes";
 
 const app = express();
 
@@ -9,8 +13,11 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
 
 app.use("/auth", AuthRoutes);
+app.use("/job", JobRoutes);
 
 app.listen(5000, () => {
   connectDB();
