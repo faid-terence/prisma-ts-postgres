@@ -32,6 +32,23 @@ class JobController {
       return res.status(400).json(error.message);
     }
   }
+
+  async getJobById(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const job = await prisma.job.findUnique({
+        where: {
+          id: Number(id),
+        },
+      });
+      if (!job) {
+        return res.status(404).json("Job not found");
+      }
+      return res.json(job);
+    } catch (error: any) {
+      return res.status(400).json(error.message);
+    }
+  }
 }
 
 export default JobController;
