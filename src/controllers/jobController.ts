@@ -49,6 +49,31 @@ class JobController {
       return res.status(400).json(error.message);
     }
   }
+
+  async updateJob(req: Request, res: Response) {
+    const { id } = req.params;
+    const { title, description, company, location, salary, applyLink } =
+      req.body;
+    try {
+      const job = await prisma.job.update({
+        where: {
+          id: Number(id),
+        },
+        data: {
+          title,
+          description,
+          company,
+          location,
+          salary,
+          applyLink,
+        },
+      });
+      return res.json(job);
+    } catch (error: any) {
+      return res.status(400).json(error.message);
+    }
+  }
+
 }
 
 export default JobController;
