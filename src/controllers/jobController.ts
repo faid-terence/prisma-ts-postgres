@@ -74,6 +74,19 @@ class JobController {
     }
   }
 
+  async deleteJob(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      await prisma.job.delete({
+        where: {
+          id: Number(id),
+        },
+      });
+      return res.json({ message: "Job deleted successfully" });
+    } catch (error: any) {
+      return res.status(400).json(error.message);
+    }
+  }
 }
 
 export default JobController;
